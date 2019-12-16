@@ -7,6 +7,7 @@ namespace ConsoleCore
         static void Main(string[] args)
         {
             Console.WriteLine("dotnet Core!");
+            Console.WriteLine("dotnet Core!");
             Console.ReadKey();
         }
     }
