@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleCore.Entities;
+using System;
 
 namespace ConsoleCore
 {
@@ -6,8 +7,16 @@ namespace ConsoleCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("dotnet Core!");
-            Console.WriteLine("dotnet Core!");
+            Console.WriteLine("Bem vindo ao dotNetCore!");
+
+            Console.WriteLine("-- Jogo --");
+
+            var jogo = new Jogo(
+                                    new Jogador1("Thyago"),
+                                    new Jogador2()
+                                );
+
+            jogo.IniciarJogo();
             Console.ReadKey();
         }
     }
