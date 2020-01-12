@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProAgil.Model;
 
 namespace ProAgil.Controllers
 {
@@ -12,16 +13,58 @@ namespace ProAgil.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Evento>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new Evento[] {
+
+                new Evento()
+                {
+                    EventoId = 1,
+                    Local = "Brasilândia",
+                    DataEvento = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"),
+                    Lote = "1º Lote",
+                    QtdPessoas = 10,
+                    Tema = "Angular e .net Core."
+                },
+
+                new Evento()
+                {
+                    EventoId = 2,
+                    Local = "Av. Paulista",
+                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy"),
+                    Lote = "2º Lote",
+                    QtdPessoas = 30,
+                    Tema = "Angular e .net Core - Volume 2."
+                }
+            };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Evento> Get(int id)
         {
-            return "value";
+            return new Evento[] {
+
+                new Evento()
+                {
+                    EventoId = 1,
+                    Local = "Brasilândia",
+                    DataEvento = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"),
+                    Lote = "1º Lote",
+                    QtdPessoas = 10,
+                    Tema = "Angular e .net Core."
+                },
+
+                new Evento()
+                {
+                    EventoId = 2,
+                    Local = "Av. Paulista",
+                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy"),
+                    Lote = "2º Lote",
+                    QtdPessoas = 30,
+                    Tema = "Angular e .net Core - Volume 2."
+                }
+            }.ToList().FirstOrDefault(x => x.EventoId == id); 
         }
 
         // POST api/values
