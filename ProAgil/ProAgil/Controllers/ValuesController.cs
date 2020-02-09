@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProAgil.Data;
 using ProAgil.Model;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProAgil.Controllers
 {
@@ -11,60 +14,42 @@ namespace ProAgil.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+
+        private readonly DataContext _context;
+
+        public ValuesController(DataContext context)
+        {
+            _context = context;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Evento>> Get()
+        public async Task<IActionResult> Get()
         {
-            return new Evento[] {
-
-                new Evento()
-                {
-                    EventoId = 1,
-                    Local = "Brasilândia",
-                    DataEvento = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"),
-                    Lote = "1º Lote",
-                    QtdPessoas = 10,
-                    Tema = "Angular e .net Core."
-                },
-
-                new Evento()
-                {
-                    EventoId = 2,
-                    Local = "Av. Paulista",
-                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy"),
-                    Lote = "2º Lote",
-                    QtdPessoas = 30,
-                    Tema = "Angular e .net Core - Volume 2."
-                }
-            };
+            try
+            {
+                var results = await _context.Eventos.ToListAsync();
+                return Ok(results);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro!");
+            }
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<Evento> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return new Evento[] {
-
-                new Evento()
-                {
-                    EventoId = 1,
-                    Local = "Brasilândia",
-                    DataEvento = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy"),
-                    Lote = "1º Lote",
-                    QtdPessoas = 10,
-                    Tema = "Angular e .net Core."
-                },
-
-                new Evento()
-                {
-                    EventoId = 2,
-                    Local = "Av. Paulista",
-                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy"),
-                    Lote = "2º Lote",
-                    QtdPessoas = 30,
-                    Tema = "Angular e .net Core - Volume 2."
-                }
-            }.ToList().FirstOrDefault(x => x.EventoId == id); 
+            try
+            {
+                var results = await _context.Eventos.FirstOrDefaultAsync(x => x.EventoId == id);
+                return Ok(results);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Erro!");
+            }
         }
 
         // POST api/values
