@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAgil", "ProAgil\ProAgil.csproj", "{4174846A-A7A3-40D6-B5A8-C392D5347317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAgil.WebAPI", "ProAgil\ProAgil.WebAPI.csproj", "{4174846A-A7A3-40D6-B5A8-C392D5347317}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAgilApp", "ProAgilApp\ProAgilApp.csproj", "{44DF78CC-7EE8-4634-A0E0-5FD5B8D87E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAgil.Dominio", "ProAgil.Dominio\ProAgil.Dominio.csproj", "{65B027A7-06BD-4A01-96EF-82E76CAEECD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAgil.Repositorio", "ProAgil.Repositorio\ProAgil.Repositorio.csproj", "{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{44DF78CC-7EE8-4634-A0E0-5FD5B8D87E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44DF78CC-7EE8-4634-A0E0-5FD5B8D87E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44DF78CC-7EE8-4634-A0E0-5FD5B8D87E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65B027A7-06BD-4A01-96EF-82E76CAEECD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65B027A7-06BD-4A01-96EF-82E76CAEECD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65B027A7-06BD-4A01-96EF-82E76CAEECD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65B027A7-06BD-4A01-96EF-82E76CAEECD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
