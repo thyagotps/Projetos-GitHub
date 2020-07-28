@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAgil.WebAPI", "ProAgil\P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAgilApp", "ProAgilApp\ProAgilApp.csproj", "{44DF78CC-7EE8-4634-A0E0-5FD5B8D87E55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAgil.Dominio", "ProAgil.Dominio\ProAgil.Dominio.csproj", "{65B027A7-06BD-4A01-96EF-82E76CAEECD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAgil.Dominio", "ProAgil.Dominio\ProAgil.Dominio.csproj", "{65B027A7-06BD-4A01-96EF-82E76CAEECD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAgil.Repositorio", "ProAgil.Repositorio\ProAgil.Repositorio.csproj", "{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAgil.Repositorio", "ProAgil.Repositorio\ProAgil.Repositorio.csproj", "{B7997891-EEAB-46FD-9C9A-F6E4AE85D3E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{65B027A7-06BD-4A01-96EF-82E76CAEECD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65B027A7-06BD-4A01-96EF-82E76CAEECD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65B027A7-06BD-4A01-96EF-82E76CAEECD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6FF5D0B-D755-4C81-81AB-EF9C3B1148CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7997891-EEAB-46FD-9C9A-F6E4AE85D3E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7997891-EEAB-46FD-9C9A-F6E4AE85D3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7997891-EEAB-46FD-9C9A-F6E4AE85D3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7997891-EEAB-46FD-9C9A-F6E4AE85D3E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
