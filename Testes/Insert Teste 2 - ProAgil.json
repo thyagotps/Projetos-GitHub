@@ -1,0 +1,29 @@
+{
+    "Local": "São Paulo",
+    "DataEvento": "#5/1/2020 9:30:00#",
+    "Tema": ".NetCore",
+    "QtdPessoas": 30,
+    "ImageURL": "img2.png",
+    "Telefone": 23872065,
+    "Email": "the@email.com",
+    "Lotes": 
+            [
+                {
+                    "Nome": "1 Lote",
+                    "Preco": 50.5,
+                    "DataInicio": null,
+                    "DataFim": null,
+                    "Quantidade": 14
+                },
+                {
+                    "Nome": "2 Lote",
+                    "Preco": 25.5,
+                    "DataInicio": null,
+                    "DataFim": null,
+                    "Quantidade": 20
+                }
+
+            ],
+    "RedesSocials": [],
+    "PalestrantesEventos": []
+}
