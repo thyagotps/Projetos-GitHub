@@ -3,6 +3,10 @@ import { EventoService } from '../_services/evento.service';
 import { Evento } from '../_models/Evento';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+defineLocale('pt-br', ptBrLocale);
 
 @Component({
   selector: 'app-eventos',
@@ -16,7 +20,6 @@ export class EventosComponent implements OnInit {
   imagemLargura = 100;
   imagemMargem = 2;
   mostrarImagem = false;
-  modalRef: BsModalRef;
   registerForm: FormGroup;
 
   
@@ -25,9 +28,10 @@ export class EventosComponent implements OnInit {
     private eventoService: EventoService
   , private modalService: BsModalService
   , private fb: FormBuilder
+  , private localeService: BsLocaleService
   
   ) { 
-    
+    this.localeService.use('pt-br');
   }
 
   private _filtroLista: string;
@@ -73,8 +77,8 @@ export class EventosComponent implements OnInit {
     this.eventosFiltrados = this.eventos;
   }
 
-  openModal(template: TemplateRef<any>){
-    this.modalRef = this.modalService.show(template);
+  openModal(template: any){
+    template.show();
   }
 
   validation() {
