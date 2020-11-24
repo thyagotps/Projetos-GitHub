@@ -90,7 +90,7 @@ namespace ProAgil.WebAPI.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPut("{eventoId}")]
         public async Task<IActionResult> Put(int eventoId, Evento model)
         {
             try

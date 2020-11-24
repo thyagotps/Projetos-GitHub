@@ -6,6 +6,7 @@ import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms'
 import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
+import { templateJitUrl } from '@angular/compiler';
 defineLocale('pt-br', ptBrLocale);
 
 @Component({
@@ -16,10 +17,12 @@ defineLocale('pt-br', ptBrLocale);
 export class EventosComponent implements OnInit {
 
   eventos: Evento[];
+  evento: Evento;
   eventosFiltrados: Evento[];
   imagemLargura = 100;
   imagemMargem = 2;
   mostrarImagem = false;
+  modoSalvar = '';
   registerForm: FormGroup;
 
   
@@ -78,7 +81,24 @@ export class EventosComponent implements OnInit {
   }
 
   openModal(template: any){
+    this.registerForm.reset();
     template.show();
+  }
+
+  editarEvento(evento: Evento, template: any)
+  {
+    this.modoSalvar = 'put';
+    this.openModal(template);
+    this.evento = evento;
+    this.registerForm.patchValue(evento);
+
+  }
+
+  novoEvento(template: any)
+  {
+    this.modoSalvar = 'post';
+    this.openModal(template);
+    
   }
 
   validation() {
@@ -93,8 +113,48 @@ export class EventosComponent implements OnInit {
     });
   }
 
-  salvarAlteracao(){
+  salvarAlteracao(template: any)
+  {
+    if(this.registerForm.valid)
+    {
 
+      if(this.modoSalvar == 'post')
+      {
+        this.evento = Object.assign({}, this.registerForm.value);
+        this.eventoService.postEvento(this.evento).subscribe
+        (
+          (novoEvento: Evento) => {
+            console.log(novoEvento);
+            template.hide();
+            this.getEventos();
+          }, error => {
+            console.log(error);
+          }
+        )
+      }
+
+      if(this.modoSalvar == 'put')
+      {
+        this.evento = Object.assign({id: this.evento.id}, this.registerForm.value);
+        this.eventoService.putEvento(this.evento).subscribe
+        (
+          (novoEvento: Evento) => {
+            console.log(novoEvento);
+            template.hide();
+            this.getEventos();
+          }, error => {
+            console.log(error);
+          }
+        )
+      }
+
+
+      
+    }
+
+    
   }
+
+    
 
 }
