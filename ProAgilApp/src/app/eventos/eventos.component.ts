@@ -26,6 +26,9 @@ export class EventosComponent implements OnInit {
   modoSalvar = '';
   registerForm: FormGroup;
   bodyDeletarEvento = '';
+  file: File;
+  fileNameToUpdate: string;
+  dataAtual: string;
   
 
   constructor(
@@ -92,9 +95,10 @@ export class EventosComponent implements OnInit {
   {
     this.modoSalvar = 'put';
     this.openModal(template);
-    this.evento = evento;
-    this.registerForm.patchValue(evento);
-
+    this.evento = Object.assign({}, evento);
+    this.fileNameToUpdate = evento.imageURL.toString();
+    this.evento.imageURL = '';
+    this.registerForm.patchValue(this.evento);
   }
 
   novoEvento(template: any)
@@ -124,6 +128,9 @@ export class EventosComponent implements OnInit {
       if(this.modoSalvar == 'post')
       {
         this.evento = Object.assign({}, this.registerForm.value);
+
+        this.uploadImagem();
+
         this.eventoService.postEvento(this.evento).subscribe
         (
           (novoEvento: Evento) => {
@@ -141,6 +148,9 @@ export class EventosComponent implements OnInit {
       if(this.modoSalvar == 'put')
       {
         this.evento = Object.assign({id: this.evento.id}, this.registerForm.value);
+
+        this.uploadImagem();
+
         this.eventoService.putEvento(this.evento).subscribe
         (
           (novoEvento: Evento) => {
@@ -178,6 +188,54 @@ export class EventosComponent implements OnInit {
     );
   }
 
+  onFileChanged(event){
+    const reader = new FileReader();
     
+    if (event.target.files && event.target.files.length)
+    {
+      this.file = event.target.files;
+      console.log(this.file);
+    }
+  }
+
+  uploadImagem()
+  {
+    if(this.modoSalvar == 'post')
+    {
+      const nomeArquivo = this.evento.imageURL.split("\\", 3);
+      this.evento.imageURL = nomeArquivo[2];
+  
+      this.eventoService.postUpload(this.file, nomeArquivo[2])
+        .subscribe(
+          () => {
+            this.dataAtual = new Date().getMilliseconds().toString();
+            this.getEventos();
+          }
+        );
+    }
+
+    if(this.modoSalvar == 'put')
+    {
+      if (this.fileNameToUpdate == '')
+      {
+        const nomeArquivo = this.evento.imageURL.split("\\", 3);
+        this.evento.imageURL = nomeArquivo[2];
+        this.fileNameToUpdate = this.evento.imageURL;
+      }
+      else
+      {
+        this.evento.imageURL = this.fileNameToUpdate;
+      }
+
+      this.eventoService.postUpload(this.file, this.fileNameToUpdate)
+        .subscribe(
+          () => {
+            this.dataAtual = new Date().getMilliseconds().toString();
+            this.getEventos();
+          }
+        );
+    }
+   
+  }
 
 }

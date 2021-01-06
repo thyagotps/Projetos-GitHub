@@ -15,4 +15,9 @@
     <ProjectReference Include="..\ProAgil.Repositorio\ProAgil.Repositorio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>
