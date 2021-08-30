@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace ProAgil
 {
@@ -80,14 +81,19 @@ namespace ProAgil
                             .Build();
                         options.Filters.Add(new AuthorizeFilter(policy));
                     }
-                ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+                ).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+               // .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-
+            services.AddMvc().AddNewtonsoftJson(o =>
+            {
+                o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 
             services.AddScoped<IProAgilRepositorio, ProAgilRepositorio>();
             services.AddAutoMapper();
             services.AddCors();
+            services.AddControllers();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -112,6 +118,9 @@ namespace ProAgil
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),@"Resources")),
                 RequestPath = new PathString("/Resources")
             });
+
+           
+
             app.UseMvc();
         }
     }

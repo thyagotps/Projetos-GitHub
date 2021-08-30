@@ -19,13 +19,13 @@ export class EventoService {
 
   getAllEventosByTema(tema: string): Observable<Evento[]>
   {
-    return this.http.get<Evento[]>('${this.baseURL}/getByTema/${tema}');
+    return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
   }
 
   
   getAllEventosById(id: number): Observable<Evento>
   {
-    return this.http.get<Evento>('${this.baseURL}/getById/${id}');
+    return this.http.get<Evento>(`${this.baseURL}/${id}`);
   }
 
   postEvento(evento: Evento)

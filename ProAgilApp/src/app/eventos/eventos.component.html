@@ -42,7 +42,7 @@
       <th>Data</th>
       <th>Qtd Pessoa</th>
       <th>Lote</th>
-      <th>Opções</th>
+      <th colspan="2" class="text-center">Opções</th>
     </tr>
   </thead>
 
@@ -81,6 +81,15 @@
           </button>
         </div>
       </td>
+
+      <td>
+        <a tooltip="Edição Detalhada"
+           class="btn btn-sm btn-warning"
+           [routerLink]="['/evento',evento.id,'edit']">
+              <i class="fa fa-eraser"></i>
+        </a>
+      </td>
+
     </tr>
   </tbody>
   <tfoot *ngIf="!eventos">

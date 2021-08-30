@@ -46,6 +46,7 @@ namespace ProAgil.WebAPI.Controllers
         }
 
 
+        
         [HttpGet("{eventoId}")]
         public async Task<IActionResult> Get(int eventoId)
         {
@@ -141,6 +142,19 @@ namespace ProAgil.WebAPI.Controllers
             {
                 var evento = await repo.GetEventoAsyncById(eventoId, false);
                 if (evento == null) return NotFound();
+
+                var idLotes = new List<int>();
+                var idRedesSociais = new List<int>();
+
+                model.Lotes.ForEach(lote => idLotes.Add(lote.Id));
+                model.RedesSocials.ForEach(rede => idRedesSociais.Add(rede.Id));
+
+                var lotes = evento.Lotes.Where(lote => !idLotes.Contains(lote.Id)).ToArray();
+                var redes = evento.RedesSocials.Where(rede => !idRedesSociais.Contains(rede.Id)).ToArray();
+
+                if (lotes.Length > 0) repo.DeleteRange(lotes);
+                if (redes.Length > 0) repo.DeleteRange(redes);
+
 
                 mapper.Map(model, evento);
 
