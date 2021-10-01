@@ -1,0 +1,11 @@
+** Deplyment **
+https://angular.io/guide/deployment
+
+npm install source-map-explorer --save-dev => Para mudar o nome dos arquivos quando faz o build, para não dar erro de "cache"
+
+ng build --prod --source-map => para dar build, vai ser criada uma pasta dist/
+
+Entrar na pasta dist/projeto e rodar o comando: ng serve --port 4201 -o
+
+
+Pasta do publis do .net web api: bin\Release\netcoreapp3.1\publish\
